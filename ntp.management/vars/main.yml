@@ -1,0 +1,5 @@
+---
+# vars file for ntp.management
+
+ntp_server1: dharmarao.node1.com
+ntp_server2: dharmarao.node2.com

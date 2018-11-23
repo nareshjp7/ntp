@@ -1,0 +1,8 @@
+#Own NTP Role play
+
+---
+- name: Play role of ntp.management
+  hosts: all
+  
+  roles:
+    - ntp.management

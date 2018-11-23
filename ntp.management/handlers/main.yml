@@ -1,0 +1,8 @@
+---
+# handlers file for ntp.management
+
+- name: restart_ntp_client
+  service:
+    name: ntpd
+    state: restarted
+    enabled: yes

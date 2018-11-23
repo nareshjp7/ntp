@@ -1,0 +1,24 @@
+---
+#Own playbook for ntp management
+- name: Remove chrony client package from the system
+  package: 
+    name: chrony
+    state: absent
+  tags: remove_chrony,start_ntp
+
+- name: Install ntp client package
+  package:
+    name: ntp
+    state: present
+  tags: install_ntp,start_ntp
+
+- name: Deploye ntp.conf fileto the client
+  template:
+    src: ntp.j2
+    dest: /etc/ntp.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: restart_ntp_client
+  tags: copy_ntp.conf,start_ntp

@@ -1,0 +1,14 @@
+#template file of ntp.j2
+
+##NTP config - Managed using ansible
+
+driftfile /var/lib/ntp/drift
+restrict default nomodify notrap nopeer noquery
+restrict 127.0.0.1
+restrict ::1
+
+server {{ ntp_server1 }} iburst
+server {{ ntp_server2 }} iburst
+
+keys /etc/ntp/keys
+disable monitor

@@ -1,0 +1,4 @@
+---
+# tasks file for ntp.management
+
+- include: ntp.yml
