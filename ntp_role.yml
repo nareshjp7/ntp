@@ -3,6 +3,7 @@
 ---
 - name: Play role of ntp.management
   hosts: all
+  become: yes
   
   roles:
     - ntp.management
