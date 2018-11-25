@@ -2,7 +2,7 @@ Role Name
 =========
 
     This is only for installation ntp on over the client server using Asible using modelus of package or yum, tempalate and service.
-    Using ntp for clock synchronisation between computer system over packate switched, variable latency data network
+    Using ntp for clock synchronisation between computer system over packate switched, variable latency data network.
 
 Requirements
 ------------
