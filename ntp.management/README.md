@@ -1,38 +1,67 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This is only for installation ntp on over the client server using Asible using modelus of package or yum, tempalate and service.
+Using ntp for clock synchronisation between computer system over packate switched, variable latency data network
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Requirements: knowledge over on templates, package and service using handlers.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Using variable of 
+    ntp_server1: dharmarao.node1.com
+    ntp_server2: dharmarao.node2.com
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
+
+Templates
+---------
+
+#template file of ntp.j2
+
+##NTP config - Managed using ansible
+
+driftfile /var/lib/ntp/drift
+restrict default nomodify notrap nopeer noquery
+restrict 127.0.0.1
+restrict ::1
+
+server {{ ntp_server1 }} iburst
+server {{ ntp_server2 }} iburst
+
+keys /etc/ntp/keys
+disable monitor
+
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+    #Own NTP Role play
+    # S Dharma Rao
+---
+- name: Play role of ntp.management
+  hosts: all
+  become: yes
+  
+  roles:
+    - ntp.management
 
 License
 -------
 
-BSD
+SDR
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+S Dharma Rao
+dharmarao.samenu@outlook.com
